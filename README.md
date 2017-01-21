@@ -1,5 +1,2 @@
-# oc_pvt_php
+# ОЦ ПВТ курс "Программирование на PHP"
 Public content for the php course
-
-
-
