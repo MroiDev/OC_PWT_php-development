@@ -73,7 +73,7 @@ $bag_height = 40;
 $prod_width = 90;
 $prod_height = 30;
 
-// Set the notodocations for the $result
+// Set the notification for the $result
 $true = 'This product will fit in the package';
 $false = 'This product will not fit in the bag';
 
