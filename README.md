@@ -5,3 +5,7 @@ Public content for the php course
 [lesson_2_tasks_KSR_1a.php](https://github.com/MroiDev/OC_PWT_php-development/blob/master/lesson_2_tasks_KSR_1a.php) - Контрольная самостоятельная работа 1А "Условные операторы" (работаем с условным оператором IF)
 
 [lesson_3_tasks.php](https://github.com/MroiDev/OC_PWT_php-development/blob/master/lesson_3_tasks.php) - Контрольная самостоятельная работа "Работа с циклами" (выводим информацию в таблицах)
+
+[lesson_3_tasks_KSR_1b.php](https://github.com/MroiDev/OC_PWT_php-development/blob/master/lesson_3_tasks_KSR_1b.php) - Контрольная самостоятельная работа по теме "Операторы циклов" (продвинутые таблицы)
+
+[lesson_3_tasks_KSR_1b_3.php](https://github.com/MroiDev/OC_PWT_php-development/blob/master/lesson_3_tasks_KSR_1b_3.php) - Контрольная самостоятельная работа по теме "Операторы циклов" (задание №3 про вклады в банк)
