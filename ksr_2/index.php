@@ -1,12 +1,7 @@
 <?php
 
-// Константа для адреса формы (чтобы не искать ее в длинном коде)
-define ("URL", "form.html");
-define ("MAX_PARAGRAPHS", "10");
+define ("PAR_PER_PAGE", "10");
 
-
-// Model
-// Класс отвечает за взаимодействие с данными и подготовку выборки
 class Model
 {
     private $data;
@@ -14,67 +9,60 @@ class Model
 
     public function setData()
     {
-        include 'text.php';
+		include 'text.php';
         $this->data = iconv("Windows-1251", "UTF-8", $text);
     }
 	
-	public function structuringData()
+	public function getData($pageNumber)
 	{
+		$start = ($pageNumber - 1) * PAR_PER_PAGE;
+		$end = PAR_PER_PAGE;
+		
 		$this->data = explode("\r\n", $this->data);
-	}
-	
-	public function getData()
-    {
-        return $this->data;
-    }
-	
-	public function all()
-	{
-		$this->setData();
-		$this->structuringData();
-		$this->getData();
+		$this->data = array_slice($this->data, $start, $end);
+		
+		return $this->data;
 	}
 }
 
-
-// View
-// Класс отвечает за вывод информации на экран
 class View
 {
-	private $form;
-	private $formUrl;
-
-	// Функция для добавления формы ввода данных на всех страницах
-	public function __construct()
+	private $data;
+	
+	public function __construct($data)
 	{
-		$this->formUrl = URL;
-		$this->form = include($this->formUrl);
+		$this->data = $data;
 	}
 	
-	public function setParagraph($perpage, $data)
+	public function viewData()
 	{
-		echo "Номер строки: {$perpage}, а в ней текст: {$data[$perpage]}";
+		foreach($this->data as $key=>$value) {
+			echo "Позиция в массиве: {$key} || Строка: {$value}<br>";
+		}
 	}
 }
 
-
-// Controller
-// Класс отвечает за управление программой
 class Controller
 {
-	private $parOnPage;
+	private $pageNumber;
+	private $model;
+	private $view;
+	private $data;
 	
-	// Принимаем данные из формы
-	public function paragraphsPerPage()
+	public function __construct()
 	{
-		$this->parOnPage = $_GET['form'];
-		return $this->parOnPage;
+		$this->pageNumber = $_GET['page_number'];
+	}
+	
+	public function run()
+	{
+		$this->model = new Model();
+		$this->model->setData();
+		$this->data = $this->model->getData($this->pageNumber);
+		$this->view = new View($this->data);
+		$this->view->viewData();
 	}
 }
 
-
-$model = new Model;
-$model->all();
 $controller = new Controller;
-$view = new View;
-$view->setParagraph($controller->paragraphsPerPage(), $model->getData());
+$controller->run();
