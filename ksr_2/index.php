@@ -4,14 +4,14 @@ define ("PAR_PER_PAGE", "10");
 
 class Model
 {
-    private $data;
-    private $value;
-
-    public function setData()
+	private $data;
+	private $value;
+	
+	public function setData()
     {
 		include 'text.php';
-        $this->data = iconv("Windows-1251", "UTF-8", $text);
-    }
+		$this->data = iconv("Windows-1251", "UTF-8", $text);
+	}
 	
 	public function getData($pageNumber)
 	{
