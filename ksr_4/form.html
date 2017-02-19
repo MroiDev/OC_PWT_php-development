@@ -1,0 +1,17 @@
+﻿<form action='index.php' method='post'>
+	<label for='name'>Ваше имя*</label>
+	<input type='text' name='name' id='name' placeholder='Не более 10 символов' maxlength='10' required>
+	
+	<br><br>	
+	
+	<label for='feedback'>Текст отзыва*</label><br>
+	<textarea rows="5" cols="40" name="feedback" id='feedback' placeholder='Не более 250 символов' maxlength='250' required></textarea>
+	
+	<input type='hidden' name='action' id='action' value='add'>
+	
+	<br><br>
+	
+	<input type='submit' value='Добавить отзыв'>
+	
+	<p style='font-style: italic;'>	* - обязательное поле.</p>
+</form>
